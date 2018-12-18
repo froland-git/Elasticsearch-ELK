@@ -1,0 +1,52 @@
+# Install and Configure Elasticsearch on Centos Machine
+------------------------------------------------------------------------------
+    1.   sudo yum install java-1.8.0-openjdk.x86_64 
+    2.   java -version
+    3.   yum install wget
+    4.   wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.2.4.rpm
+    5.   sudo rpm -ivh elasticsearch-6.2.4.rpm
+    6.   systemctl enable elasticsearch.service
+    7.   sudo service elasticsearch start
+    8.   sudo service elasticsearch status
+----------------------------------------------------------------------------------
+# Configuring basic parameters :  Open the elasticsearch.yml file, which contains most of the Elasticsearch configuration options: 
+
+sudo vi /etc/elasticsearch/elasticsearch.yml
+            cluster.name: ELKmaster
+            node.name: node01
+            path.data: /opt/data/elasticsearch
+            network.host: 192.168.2.150
+
+            chown -R elasticsearch:elasticsearch /opt/data/elasticsearch
+            sudo service elasticsearch start
+            sudo service elasticsearch status 
+            http://192.168.2.150:9200/
+----------------------------------------------------------------------------------------
+# Installing the Head plugin for Elasticsearch :
+ 
+The Head plugin is a web front for the Elasticsearch cluster that is very easy to use. 
+This plugin offers various features such as showing the graphical representations of shards, the cluster state, easy query creations
+and downloading query-based data in the CSV format.
+
+sudo vi /etc/elasticsearch/elasticsearch.yml 
+http.cors.enabled: true
+http.cors.allow-origin: "*"
+
+ sudo service elasticsearch stop
+ sudo service elasticsearch status
+ sudo service elasticsearch start
+ sudo service elasticsearch status
+ 
+ sudo yum install epel-release
+sudo yum install nodejs
+sudo yum install npm
+
+yum install git
+git clone git://github.com/mobz/elasticsearch-head.git
+cd elasticsearch-head
+npm install
+npm run start
+
+http://192.168.2.150:9100/
+ ----------------------------------------------------------------------------
+
