@@ -37,7 +37,7 @@ http.cors.allow-origin: "*"
  sudo service elasticsearch start
  sudo service elasticsearch status
  
- sudo yum install epel-release
+sudo yum install epel-release
 sudo yum install nodejs
 sudo yum install npm
 
